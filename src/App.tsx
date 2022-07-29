@@ -5,8 +5,8 @@ import {
 } from "@chakra-ui/react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
-import Docs from "./pages/Docs"
 import Home from "./pages/Home"
+import GetStarted from "./pages/GetStarted"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -14,7 +14,7 @@ export const App = () => (
     <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/docs" element={<Docs />} />
+        <Route path="/GetStarted" element={<GetStarted />} />
       </Routes>
     </Router>
   </ChakraProvider>

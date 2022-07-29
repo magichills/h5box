@@ -3,6 +3,7 @@ import { Spacer, ButtonGroup, Button, useColorModeValue, Flex} from '@chakra-ui/
 import { ColorModeSwitcher } from './../../ColorModeSwitcher';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FiSend } from "react-icons/fi";
 const Navbar = () => {
   const color = useColorModeValue('black', 'white');
   const NavLink = styled(Link)`
@@ -29,9 +30,9 @@ const Navbar = () => {
         <Spacer />
         <ButtonGroup gap='2'>
           <ColorModeSwitcher />
-          <Link to='/Docs' data-cy="Docs">
-              <Button variant='outline' colorScheme='Github'>
-                Docs
+          <Link to='/GetStarted' data-cy="Docs">
+              <Button leftIcon={<FiSend />} variant='outline' colorScheme='Github'>
+                Get Started
               </Button>
           </Link>
           <Button leftIcon={<FaGithub />} variant='outline' colorScheme='Github'>

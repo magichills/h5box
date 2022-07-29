@@ -1,16 +1,24 @@
 import React from 'react'
-import { HomeContainer } from './style';
+import { GsContainer } from './style';
 import { Heading, Text, Code } from '@chakra-ui/react';
 import { Carousel } from 'react-carousel-slider-component';
 import slides from './../assests/ExampleSlides.json';
-const Home = () => {
+const GetStarted = () => {
   return (
-    <HomeContainer>
-      <Heading as='h1' size='xl' noOfLines={1}>React Carousel Slider Component</Heading>
-      <Text>
+    <GsContainer>
+      <Heading as='h1' size='xl' noOfLines={1} alignSelf={'center'}>Get Started</Heading>
+      <Text alignSelf={'center'}>React Carousel Component is a carousel component built with React.</Text>
+
+      <Heading as='h2' size='lg' noOfLines={1}>Installation</Heading>
+      <Code>
+        npm install react-carousel-slider-component
+      </Code>
+      <Heading as='h2' size='lg' noOfLines={1}>Props</Heading>
+        
+      <Text alignSelf={'center'}>
         Single Item Carousel
       </Text>
-      <div style={{width: '40%', height: '350px'}}>
+      <div style={{width: '40%', height: '350px', alignSelf: 'center'}} >
       <Carousel
         slides={slides['slides']}
         totalSlides={3}
@@ -59,7 +67,8 @@ const Home = () => {
           }
       `
       }/>
-    </HomeContainer>
+    </GsContainer>
   )
 }
-export default Home;
+export default GetStarted;
+
