@@ -2,6 +2,7 @@ import React from 'react'
 import { GsContainer } from './style';
 import { Heading, Text, Code } from '@chakra-ui/react';
 import { Carousel } from 'react-carousel-slider-component';
+import PropItem from './../components/PropItem';
 import slides from './../assests/ExampleSlides.json';
 const GetStarted = () => {
   return (
@@ -11,10 +12,10 @@ const GetStarted = () => {
 
       <Heading as='h2' size='lg' noOfLines={1}>Installation</Heading>
       <Code>
-        npm install react-carousel-slider-component
+        npm install react-carousel-slider-component --save
       </Code>
       <Heading as='h2' size='lg' noOfLines={1}>Props</Heading>
-        
+      <PropItem title={'slides'} type={'Array'} required={'optional'} description={'Images for the carousel. The array should be composed of {src: "..", alt: ".."} elements.'} defaultValue={''}/>
       <Text alignSelf={'center'}>
         Single Item Carousel
       </Text>
