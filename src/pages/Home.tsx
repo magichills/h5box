@@ -1,64 +1,87 @@
-import React from 'react'
-import { HomeContainer } from './style';
-import { Heading, Text, Code } from '@chakra-ui/react';
+import React, { useState } from 'react'
+import { FormContainer, HomeContainer } from './style';
+import { Heading, Switch, FormControl, FormLabel, Stack, RadioGroup, Radio, NumberInput, NumberIncrementStepper, NumberDecrementStepper, NumberInputStepper, NumberInputField, SimpleGrid, Box} from '@chakra-ui/react';
 import { Carousel } from 'react-carousel-slider-component';
 import slides from './../assests/ExampleSlides.json';
 const Home = () => {
+  const [indicator, setIndicator] = useState(true);
+  const [indicatorType, setIndicatorType] = useState('circle');
+  type IndicatorType = 'circle' | 'number';
+  const [autoplay, setAutoplay] = useState<boolean>(false);
+  const [autoplayDuration, setAutoplayDuration] = useState<number>(2);
+  const [slidesToShow, setSlidesToShow] = useState<number>(1);
+  const [slidesToScroll, setSlidesToScroll] = useState<number>(1);
+  const [infinite, setInfinite] = useState<boolean>(false);
   return (
     <HomeContainer>
       <Heading as='h1' size='xl' noOfLines={1}>React Carousel Slider Component</Heading>
-      <Text>
-        Single Item Carousel
-      </Text>
-      <div style={{width: '40%', height: '350px'}}>
+      <div style={{width: '60%', height: '500px'}}>
       <Carousel
         slides={slides['slides']}
         totalSlides={3}
-        indicators={true}
+        indicators={indicator}
+        indicatorType={indicatorType as IndicatorType}
+        autoplay={autoplay}
+        autoplayDuration={autoplayDuration}
+        slidesToShow={slidesToShow}
+        slidesToScroll={slidesToScroll}
+        infinite={infinite}
       >
       </Carousel>
       </div>
-      <Code display="block" whiteSpace="pre" children={`      
-        import React from 'react';
-        import './App.scss';
-        import Carousel from './components/Carousel/Carousel';
-        function App() {
-          const slides = [
-            {
-            src: 'https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-            alt: 'Early morning at Lake Bled',
-            href: 'https://unsplash.com/photos/XGDBdSQ70O0',
-            href_target: '_blank',
-            },
-            {
-            src: 'https://images.unsplash.com/photo-1518717202715-9fa9d099f58a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80',
-            alt: 'A picture of grass landscape and blue sky',
-            href: 'https://unsplash.com/photos/-nYBR0LFTvQ',
-            href_target: '_blank',
-            },
-            {
-              src: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1111&q=80',
-              alt: 'A picture of a lake with a mountain in the background',
-              href: 'https://unsplash.com/photos/oMneOBYhJxY',
-              href_target: '_blank',
-            }
-          ];
-          return (
-              <div  style={{textAlign: 'center'}}>
-              <h1>React Carousel Component</h1>
-              <div style={{width: '40%', height: '350px'}}>
-              <Carousel
-                slides={slides}
-                totalSlides={3}
-                indicators={true}
-              >
-              </Carousel>
-              </div>
-          );
-          export default App;
-          }
-      `
-      }/>
+        <FormControl>
+          <Stack direction='row' spacing={10}>
+            <Box display='flex' flexDirection='row'>
+              <FormLabel>Show Indicators</FormLabel>
+              <Switch isChecked={indicator} onChange={() => setIndicator(!indicator)} />
+            </Box>
+
+            <FormLabel>Infinite Scroll</FormLabel>
+            <Switch isChecked={infinite} onChange={() => setInfinite(!infinite)} />
+            <FormLabel>Indicator type</FormLabel>
+            <RadioGroup onChange={setIndicatorType} value={indicatorType}>
+              <Stack direction='row' spacing={2} >
+                <Radio value='circle' > Circle </Radio>
+                <Radio value='number' > Number </Radio>
+              </Stack>
+            </RadioGroup>
+          </Stack>
+        </FormControl>
+
+        <FormControl>
+          <Stack direction='row' spacing={10}>
+            <Stack>
+              <FormLabel>Autoplay</FormLabel>
+              <Switch isChecked={autoplay} onChange={() => setAutoplay(!autoplay)} />
+              <FormLabel>Autoplay Duration(Seconds)</FormLabel>
+              <NumberInput size='sm' maxW={20} step={1} defaultValue={2} min={1} max={60} onChange={(e) => setAutoplayDuration(parseInt(e))}>
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper/>
+                  <NumberDecrementStepper/>
+                </NumberInputStepper>
+              </NumberInput>
+            </Stack>
+            <Stack>
+              <FormLabel>Slides to Show</FormLabel>
+              <NumberInput size='sm' maxW={20} step={1} defaultValue={1} min={1} max={3} onChange={(e) => setSlidesToShow(parseInt(e))}>
+              <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper/>
+                  <NumberDecrementStepper/>
+                </NumberInputStepper>
+              </NumberInput>
+              <FormLabel>Slides to Scroll</FormLabel>
+              <NumberInput size='sm' maxW={20} step={1} defaultValue={1} min={1} max={3} onChange={(e) => setSlidesToScroll(parseInt(e))}>
+              <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper/>
+                  <NumberDecrementStepper/>
+                </NumberInputStepper>
+              </NumberInput>
+            </Stack>
+          </Stack>
+      </FormControl>
     </HomeContainer>
   )
 }

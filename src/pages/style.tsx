@@ -16,3 +16,10 @@ export const GsContainer = styled.div`
   gap: 2rem;
   margin-left: 2rem;
 `
+
+export const FormContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-flow: row wrap;
+`
