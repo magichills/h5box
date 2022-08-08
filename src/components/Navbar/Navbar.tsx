@@ -1,9 +1,10 @@
 import { FaGithub } from "react-icons/fa";
-import { Spacer, ButtonGroup, Button, useColorModeValue, Flex} from '@chakra-ui/react';
+import { Spacer, ButtonGroup, Button, useColorModeValue, Flex, MenuItem, MenuList, MenuButton, IconButton, Menu} from '@chakra-ui/react';
 import { ColorModeSwitcher } from './../../ColorModeSwitcher';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiSend } from "react-icons/fi";
+import { GiHamburgerMenu } from "react-icons/gi";
 const Navbar = () => {
   const color = useColorModeValue('black', 'white');
   const NavLink = styled(Link)`
@@ -22,7 +23,7 @@ const Navbar = () => {
   `;
   return (
       <Nav direction='row' minWidth='max-content' alignItems='center' gap='2'>
-        <ButtonGroup>
+        <ButtonGroup display={{lg: 'flex', base:'none'}}>
           <NavLink to='/' data-cy="home nav">
             React Carousel Slider Component
           </NavLink>
@@ -31,21 +32,51 @@ const Navbar = () => {
         <ButtonGroup gap='2'>
           <ColorModeSwitcher />
           <Link to='/GetStarted' data-cy="Docs">
-              <Button leftIcon={<FiSend />} variant='outline' colorScheme='Github'>
+              <Button leftIcon={<FiSend />} variant='outline' colorScheme='Github'  display={{lg: 'flex', base:'none'}}>
                 Get Started
               </Button>
           </Link>
-          <Button leftIcon={<FaGithub />} variant='outline' colorScheme='Github'>
+          <Button leftIcon={<FaGithub />} variant='outline' colorScheme='Github' display={{lg: 'flex', base:'none'}}>
             <a href='https://github.com/magichills/React-Carousel-Slider-Component' target='_blank' rel="noreferrer">
               Github
             </a>
           </Button>
-          <Button variant='solid' colorScheme='teal'>
+          <Button variant='solid' colorScheme='teal'  display={{lg: 'flex', base:'none'}}>
             <a href='https://www.npmjs.com/package/react-carousel-slider-component' target='_blank' rel="noreferrer">
               Download
             </a>
           </Button>
-
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label='Options'
+              icon={<GiHamburgerMenu />}
+              variant='outline'
+              display={{base: 'flex', lg: 'none'}}  
+            />
+            <MenuList>
+              <Link to='/' data-cy="home-nav">
+                <MenuItem>
+                  Home
+                </MenuItem>
+              </Link>
+              <Link to='/GetStarted' data-cy="Docs">
+                <MenuItem>
+                  Get Started
+                </MenuItem>
+              </Link>
+              <a href='https://github.com/magichills/React-Carousel-Slider-Component' target='_blank' rel="noreferrer">
+                <MenuItem>
+                  Github
+                </MenuItem>
+              </a>
+              <a href='https://www.npmjs.com/package/react-carousel-slider-component' target='_blank' rel="noreferrer">
+                <MenuItem >
+                  Download
+                </MenuItem>
+              </a>
+            </MenuList>
+          </Menu>
         </ButtonGroup>
       </Nav>
   );
