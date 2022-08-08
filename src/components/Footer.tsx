@@ -18,7 +18,7 @@ const Footer = () => {
           justify={{ base: 'center', md: 'space-between' }}
           align={{ base: 'center', md: 'center' }}
           >
-          <Text>© 2022 Magic Hills Pty Ltd Australian Business Number (ABN) 73 140 123 511</Text>
+          <Text>© {new Date().getFullYear()} Magic Hills Pty Ltd Australian Business Number (ABN) 73 140 123 511</Text>
           <Text>Made with Love and Passion in Sydney, Australia</Text>
         </Container>
       </Box>
