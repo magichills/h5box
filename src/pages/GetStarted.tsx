@@ -1,5 +1,5 @@
 import React from 'react'
-import { GsContainer } from './style';
+import { CarouselDiv, GsContainer } from './style';
 import { Heading, Text, Code, Stack } from '@chakra-ui/react';
 import { Carousel } from 'react-carousel-slider-component';
 import PropItem from './../components/PropItem';
@@ -33,15 +33,16 @@ const GetStarted = () => {
       <Text alignSelf={'center'}>
         Single Item Carousel
       </Text>
-      <div style={{width: '40%', height: '350px', alignSelf: 'center'}} >
-      <Carousel
-        slides={slides['slides']}
-        totalSlides={3}
-        indicators={true}
-      >
-      </Carousel>
-      </div>
-      <Code display="block" whiteSpace="pre" children={`      
+      <CarouselDiv style={{ alignItems: 'center', margin: 'auto'}}>
+        <Carousel
+          slides={slides['slides']}
+          totalSlides={3}
+          indicators={true}
+        >
+        </Carousel>
+      </CarouselDiv>
+
+      <Code display={{base: 'none', xl: 'block'}} style={{margin: 'auto'}} whiteSpace="pre" children={`      
         import React from 'react';
         import './App.scss';
         import Carousel from './components/Carousel/Carousel';
