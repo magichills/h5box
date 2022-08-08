@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { FormContainer, HomeContainer } from './style';
-import { Heading, Switch, FormControl, FormLabel, Stack, RadioGroup, Radio, NumberInput, NumberIncrementStepper, NumberDecrementStepper, NumberInputStepper, NumberInputField, SimpleGrid, Box} from '@chakra-ui/react';
+import { FormContainer, HomeContainer, InnerForm } from './style';
+import { Heading, Switch, FormControl, FormLabel, Stack, RadioGroup, Radio, NumberInput, NumberIncrementStepper, NumberDecrementStepper, NumberInputStepper, NumberInputField, Box} from '@chakra-ui/react';
 import { Carousel } from 'react-carousel-slider-component';
 import slides from './../assests/ExampleSlides.json';
 const Home = () => {
@@ -29,13 +29,13 @@ const Home = () => {
       >
       </Carousel>
       </div>
-        <FormControl>
-          <Stack direction='row' spacing={10}>
+      <FormContainer>
+        <FormControl >
+          <Stack direction='row' spacing={5} justifyContent='center'>
             <Box display='flex' flexDirection='row'>
               <FormLabel>Show Indicators</FormLabel>
               <Switch isChecked={indicator} onChange={() => setIndicator(!indicator)} />
             </Box>
-
             <FormLabel>Infinite Scroll</FormLabel>
             <Switch isChecked={infinite} onChange={() => setInfinite(!infinite)} />
             <FormLabel>Indicator type</FormLabel>
@@ -48,40 +48,43 @@ const Home = () => {
           </Stack>
         </FormControl>
 
-        <FormControl>
-          <Stack direction='row' spacing={10}>
-            <Stack>
-              <FormLabel>Autoplay</FormLabel>
-              <Switch isChecked={autoplay} onChange={() => setAutoplay(!autoplay)} />
-              <FormLabel>Autoplay Duration(Seconds)</FormLabel>
-              <NumberInput size='sm' maxW={20} step={1} defaultValue={2} min={1} max={60} onChange={(e) => setAutoplayDuration(parseInt(e))}>
+        <InnerForm>
+          <FormControl>
+              <Stack direction='row' justifyContent={'center'}>
+                <FormLabel>Autoplay</FormLabel>
+                <Switch isChecked={autoplay} onChange={() => setAutoplay(!autoplay)} />
+                <FormLabel>Autoplay Duration(Seconds)</FormLabel>
+                <NumberInput size='sm' maxW={20} step={1} defaultValue={2} min={1} max={60} onChange={(e) => setAutoplayDuration(parseInt(e))}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper/>
+                    <NumberDecrementStepper/>
+                  </NumberInputStepper>
+                </NumberInput>
+              </Stack>
+          </FormControl>
+          <FormControl>
+              <Stack direction='row' justifyContent={'center'}>
+                <FormLabel>Slides to Show</FormLabel>
+                <NumberInput size='sm' maxW={20} step={1} defaultValue={1} min={1} max={3} onChange={(e) => setSlidesToShow(parseInt(e))}>
                 <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper/>
-                  <NumberDecrementStepper/>
-                </NumberInputStepper>
-              </NumberInput>
-            </Stack>
-            <Stack>
-              <FormLabel>Slides to Show</FormLabel>
-              <NumberInput size='sm' maxW={20} step={1} defaultValue={1} min={1} max={3} onChange={(e) => setSlidesToShow(parseInt(e))}>
-              <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper/>
-                  <NumberDecrementStepper/>
-                </NumberInputStepper>
-              </NumberInput>
-              <FormLabel>Slides to Scroll</FormLabel>
-              <NumberInput size='sm' maxW={20} step={1} defaultValue={1} min={1} max={3} onChange={(e) => setSlidesToScroll(parseInt(e))}>
-              <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper/>
-                  <NumberDecrementStepper/>
-                </NumberInputStepper>
-              </NumberInput>
-            </Stack>
-          </Stack>
-      </FormControl>
+                  <NumberInputStepper>
+                    <NumberIncrementStepper/>
+                    <NumberDecrementStepper/>
+                  </NumberInputStepper>
+                </NumberInput>
+                <FormLabel>Slides to Scroll</FormLabel>
+                <NumberInput size='sm' maxW={20} step={1} defaultValue={1} min={1} max={3} onChange={(e) => setSlidesToScroll(parseInt(e))}>
+                <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper/>
+                    <NumberDecrementStepper/>
+                  </NumberInputStepper>
+                </NumberInput>
+              </Stack>
+          </FormControl>
+        </InnerForm>
+      </FormContainer>
     </HomeContainer>
   )
 }

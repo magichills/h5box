@@ -20,6 +20,14 @@ export const GsContainer = styled.div`
 export const FormContainer = styled.div`
   display: flex;
   width: 100%;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
+`
+export const InnerForm = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
   flex-direction: row;
-  flex-flow: row wrap;
+  align-items: center;
 `
